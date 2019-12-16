@@ -9,9 +9,6 @@ bleSerial.on('scanning', (status) => {
 
 bleSerial.on('connected', () => {
   console.log(`connected to: ${ bleSerial.peripheral.address }`)
-  // console.log(bleSerial.count)
-  // let count = 0
-
   const device = new iSparkleBle(bleSerial)
 
   // listen for terminal input

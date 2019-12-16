@@ -1,6 +1,16 @@
 # iSparkle BLE
 
-...
+Custom controller for [iSparkle](https://www.isparklelight.com) LED Christmas lights. iSparkle uses a BLE device that pairs with a clunky Android/iOS application to control the functions. This is a NodeJS implementation of the API.
+
+Commands were reverse-engineered using the iSparkle app and Bluetooth packet capturing on Android.
+
+## Installation & Usage
+
+Clone the repository and and run `npm install` to install depedencies.
+
+See the [noble](https://github.com/abandonware/noble) repository for installation/execution requirements for Linux/Windows.
+
+Start with `npm start`, once the device connects you can enter your commands in the terminal. Multiple commands can be separated with a comma.
 
 ## Commands
 
@@ -22,7 +32,7 @@ Power commands are made up of 1 character appended to the preceding 4 characters
 
 After powering on you must send a PT command to turn on the lights.
 
-### Example
+#### Example
 
 ```
 PW1  // power on
@@ -47,7 +57,7 @@ Brightness is only used by the **solid** function.
 Timing controls pause duration when switching between brightness values when used with **solid**.
 Timing controls fade in and fade out duration when used with **fade**.
 
-### Example
+#### Example
 
 ```
 1010700007000  // mixed solid with 70% brightness
@@ -63,7 +73,7 @@ Two scheduled power on/off times can be set. To set a schedule, send a TM comman
 
 Time commands are a datetime stamp in the following format: `1YYYYMMDDHHmmss`.
 
-### Example
+#### Example
 
 ```
 120191213080634  // Dec 12, 2019 08:03:34
@@ -84,7 +94,7 @@ Time commands are a datetime stamp in the following format: `nHHMMHHMM`.
 
 To clear a scheduled send all zeroes as the time format. A TM command is not required to be sent before when clearing a schedule.
 
-### Example
+#### Example
 
 ```
 SP107001000  // set scheduled 1 to start at 07:00 and end at 10:00
@@ -99,3 +109,4 @@ SP400000000  // clear schedule 2
 - https://github.com/abandonware/noble
 - https://github.com/tigoe/BluetoothLE-Examples/tree/master/noble/readSerial
 - http://nilhcem.com/iot/reverse-engineering-simple-bluetooth-devices
+- https://www.isparklelight.com

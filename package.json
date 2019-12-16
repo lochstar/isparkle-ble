@@ -1,7 +1,7 @@
 {
   "name": "isparkle-ble",
   "version": "1.0.0",
-  "description": "",
+  "description": "Custom controller for iSparkle LED Christmas lights.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
