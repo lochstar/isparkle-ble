@@ -10,10 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@abandonware/noble": "^1.9.2-5",
-    "audio-buffer-from": "^1.1.1",
-    "naudiodon": "^2.1.0",
-    "realtime-bpm-analyzer": "^1.1.2",
-    "web-audio-engine": "^0.13.4"
+    "@abandonware/noble": "^1.9.2-5"
   }
 }
