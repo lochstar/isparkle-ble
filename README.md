@@ -16,11 +16,14 @@ Start with `npm start`, once the device connects you can enter your commands in 
 
 Commands are either a 5, 13 or 15 character string.
 
-First 2 characters must increment starting at `00`.
+First 2 characters must increment starting at `00` per connection. These digits are handled by the library and are omitted in the below examples.
+
 Second 2 characters must begin with `PW`, `PT`, `TM` or `SP`.
 
 If a command is successful, an `AK` (Acknowledged) response will be recieved.
+
 If a command is unsuccessful, an `NA` (Not Applicable) response will be recieved.
+
 These responses are prefixed with the 2-digit count value.
 
 ### PW (Power)
@@ -60,9 +63,9 @@ Timing controls fade in and fade out duration when used with **fade**.
 #### Example
 
 ```
-1010700007000  // mixed solid with 70% brightness
-1110200002000  // white solid with 20% brightness
-1120005000050  // white fade with 5s in/out timing
+PT1010700007000  // mixed solid with 70% brightness
+PT1110200002000  // white solid with 20% brightness
+PT1120005000050  // white fade with 5s in/out timing
 ```
 
 ### TM (Time)
@@ -76,7 +79,7 @@ Time commands are a datetime stamp in the following format: `1YYYYMMDDHHmmss`.
 #### Example
 
 ```
-120191213080634  // Dec 12, 2019 08:03:34
+TM120191213080634  // Dec 12, 2019 08:03:34
 ```
 
 ### SP (Scheduled Power)

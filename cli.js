@@ -1,24 +1,27 @@
+const readline = require('readline')
 const iSparkleBle = require('./isparkle-ble')
-const BleUart = require('./ble-uart')
 
-const bleSerial = new BleUart()
+const bleSerial = new iSparkleBle()
 
 bleSerial.on('scanning', (status) => {
-  console.log(`bt radio status: ${status}`)
+  console.log(`bt radio status: ${ status }`)
 })
 
-bleSerial.on('connected', () => {
+bleSerial.on('connected', (val) => {
   console.log(`connected to: ${ bleSerial.peripheral.address }`)
-  const device = new iSparkleBle(bleSerial)
 
   // listen for terminal input
-  const readline = require('readline').createInterface({
+  const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
   })
 
-  readline.on('line', (input) => {
-    device.sendCmd(input.split(','))
+  rl.setPrompt('CMD> ')
+  rl.prompt()
+
+  rl.on('line', (input) => {
+    bleSerial.sendCmd(input.split(','))
+    rl.prompt()
   })
 })
 
