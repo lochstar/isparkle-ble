@@ -3,7 +3,7 @@ const body = require('koa-body')
 const cors = require('koa2-cors')
 const logger = require('koa-logger')
 const route = require('koa-route')
-const iSparkleBle = require('./isparkle-ble')
+const iSparkleBle = require('../../isparkle-ble')
 
 const app = new Koa()
 const bleSerial = new iSparkleBle()
@@ -51,7 +51,15 @@ app.use(route.post('/cmd', (ctx) => {
     ctx.status = 401
     ctx.body = {
       error: {
-        bleConnected
+        message: `ble not connected`
+      }
+    }
+    return
+  } else if (!ctx.request.body.cmd) {
+    ctx.status = 401
+    ctx.body = {
+      error: {
+        message: 'cmd parameter required'
       }
     }
     return
