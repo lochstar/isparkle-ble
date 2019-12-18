@@ -1,0 +1,18 @@
+{
+  "name": "isparkle-ble-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-body": "^4.1.1",
+    "koa-logger": "^3.2.1",
+    "koa-route": "^3.2.0",
+    "koa2-cors": "^2.0.6"
+  }
+}

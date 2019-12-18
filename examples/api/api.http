@@ -1,0 +1,17 @@
+@BASEURL = 192.168.2.5:1338
+
+# @name status
+GET {{BASEURL}}/status
+Content-Type: application/json
+
+###
+
+# @name cmd
+POST {{BASEURL}}/cmd
+Content-Type: application/json
+
+{
+  "cmd": "PT1120005000050"
+}
+
+###

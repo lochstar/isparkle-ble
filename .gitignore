@@ -1,5 +1,6 @@
 .DS_Store
 .history/
 .vscode/
+.http
 node_modules/
 NOTES.md
