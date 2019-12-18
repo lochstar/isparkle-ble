@@ -3,11 +3,13 @@ const iSparkleBle = require('./isparkle-ble')
 
 const bleSerial = new iSparkleBle()
 
+bleSerial.debug = true
+
 bleSerial.on('scanning', (status) => {
   console.log(`bt radio status: ${ status }`)
 })
 
-bleSerial.on('connected', (val) => {
+bleSerial.on('connected', () => {
   console.log(`connected to: ${ bleSerial.peripheral.address }`)
 
   // listen for terminal input
@@ -26,5 +28,5 @@ bleSerial.on('connected', (val) => {
 })
 
 bleSerial.on('data', (data) => {
-  console.log(`data: ${String(data)}`)
+  console.log(`data: ${ String(data) }`)
 })

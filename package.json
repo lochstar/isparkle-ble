@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Custom controller for iSparkle LED Christmas lights.",
   "main": "isparkle-ble.js",
-  "type": "module",
   "scripts": {
     "start": "node cli.js",
     "test": "echo \"Error: no test specified\" && exit 1"

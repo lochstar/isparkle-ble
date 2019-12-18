@@ -11,63 +11,56 @@ class iSparkleBle extends BleUart {
   constructor() {
     super()
     this.count = 0
+    this.debug = false
   }
 
   getCmdString(value) {
+    // Default type prefix
     let typeString = 'PT'
+
+    // Check if type prefix is set
     if (VALID_TYPES.indexOf(value.slice(0, 2)) > -1) {
       typeString = ''
     }
 
-    const countString = this.count < 10 ? `0${ this.count }` : this.count
-    const valueString = `${ value.replace(/\s+/g, '') }`  // remove spaces
-    const cmdString = `${ countString }${ typeString }${ valueString }`
-    return cmdString
-  }
+    // Prefix 2-digit count
+    let count = this.count
+    if (this.count < 10) {
+      count = `0${ count }`
+    } else if (this.count === 99) {
+      count = '00'
+    }
 
-  sendClearCmd() {
-    const countString = this.count < 10 ? `0${ this.count }` : this.count
-    const clearCmd = `${ countString }PT0000000000000`
+    // Remove spaces from value
+    const valueString = `${ value.replace(/\s+/g, '') }`
 
-    console.log(`write: ${clearCmd}`)
-    this.write(clearCmd)
-    this.count++
+    return `${ count }${ typeString }${ valueString }`
   }
 
   sendCmd(commands) {
     // single command
     if (commands.length === 1) {
+      // Handle 'on' or 'off' text input
       if (commands[0] === 'off' || commands[0] === 'on') {
-        const cmdString = this.getCmdString(commands[0] === 'off' ? 'PW0' : 'PW1')
-        console.log(`write ${commands[0]} cmd: ${cmdString}`)
-        this.write(cmdString)
-        this.count++
+        this.writeString(this.getCmdString(commands[0] === 'off' ? 'PW0' : 'PW1'))
 
+        // Activate lights after turning on
         if (commands[0] === 'on') {
-          console.log('power on')
-          this.write(this.getCmdString('1120005000050'))
-          this.count++
+          this.writeString(this.getCmdString('1120005000050'))
         }
 
         // this.sendClearCmd()
-        return cmdString
+        return
       }
 
-      const cmdString = this.getCmdString(commands[0])
-      console.log(`write: ${cmdString}`)
-      this.write(cmdString)
-      this.count++
-
+      this.writeString(this.getCmdString(commands[0]))
       this.sendClearCmd()
-      return cmdString
+      return
     }
 
     // multiple commands
     commands.forEach((command, i) => {
-      const cmdString = this.getCmdString(command)
-      console.log(`write: ${cmdString}`)
-      this.write(cmdString)
-      this.count++
+      writeString(this.getCmdString(command))
 
       // clear at end
       if (i === commands.length - 1) {
@@ -75,6 +68,18 @@ class iSparkleBle extends BleUart {
       }
     })
   }
+
+  sendClearCmd() {
+    this.writeString(this.getCmdString('0000000000000'))
+  }
+
+  writeString(cmdString) {
+    if (this.debug) {
+      console.log(`write: ${ cmdString }`)
+    }
+    this.write(cmdString)
+    this.count++
+  }
 }
 
-export default iSparkleBle
+module.exports = iSparkleBle
