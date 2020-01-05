@@ -1,6 +1,6 @@
 # iSparkle BLE
 
-Custom controller for [iSparkle](https://www.isparklelight.com) LED Christmas lights. iSparkle uses a BLE device that pairs with a clunky Android/iOS application to control the functions. This is a NodeJS implementation of the API.
+Custom controller for [iSparkle](https://www.isparklelight.com) Bluetooth fairy lights. iSparkle uses a BLE device that pairs with a clunky Android/iOS application to control the functions. This is a NodeJS implementation of the API.
 
 Commands were reverse-engineered using the iSparkle app and Bluetooth packet capturing on Android.
 
@@ -113,3 +113,4 @@ SP400000000  // clear schedule 2
 - https://github.com/tigoe/BluetoothLE-Examples/tree/master/noble/readSerial
 - http://nilhcem.com/iot/reverse-engineering-simple-bluetooth-devices
 - https://www.isparklelight.com
+- https://www.bunnings.com.au/isparkle-warm-white-and-multicolour-bluetooth-fairy-light-300-pack_p0118295
