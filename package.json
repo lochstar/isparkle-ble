@@ -5,11 +5,11 @@
   "main": "isparkle-ble.js",
   "scripts": {
     "start": "node examples/cli/cli.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start.api": "node examples/api/api.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@abandonware/noble": "^1.9.2-5"
+    "@abandonware/noble": "^1.9.2-10"
   }
 }
