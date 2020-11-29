@@ -60,7 +60,7 @@ class iSparkleBle extends BleUart {
 
     // multiple commands
     commands.forEach((command, i) => {
-      writeString(this.getCmdString(command))
+      this.writeString(this.getCmdString(command))
 
       // clear at end
       if (i === commands.length - 1) {

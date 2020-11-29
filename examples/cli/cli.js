@@ -1,5 +1,5 @@
 const readline = require('readline')
-const iSparkleBle = require('./isparkle-ble')
+const iSparkleBle = require('../../isparkle-ble')
 
 const bleSerial = new iSparkleBle()
 
