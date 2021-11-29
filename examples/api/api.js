@@ -31,7 +31,7 @@ bleSerial.on('data', (data) => {
   console.log(`data: ${ String(data) }`)
 })
 
-app.use(body());
+app.use(body())
 
 app.use(cors({
   origin: '*',
@@ -49,20 +49,20 @@ app.use(route.get('/status', (ctx) => {
 app.use(route.post('/cmd', (ctx) => {
   if (!bleConnected) {
     ctx.status = 401
-    ctx.body = {
+    return ctx.body = {
       error: {
         message: `ble not connected`
       }
     }
-    return
-  } else if (!ctx.request.body.cmd) {
+  }
+
+  if (!ctx.request.body.cmd) {
     ctx.status = 401
-    ctx.body = {
+    return ctx.body = {
       error: {
         message: 'cmd parameter required'
       }
     }
-    return
   }
 
   bleSerial.sendCmd(ctx.request.body.cmd.split(','))

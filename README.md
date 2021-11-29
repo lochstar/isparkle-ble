@@ -20,9 +20,9 @@ First 2 characters must increment starting at `00` per connection. These digits 
 
 Second 2 characters must begin with `PW`, `PT`, `TM` or `SP`.
 
-If a command is successful, an `AK` (Acknowledged) response will be recieved.
+If a command is successful, an `AK` (Acknowledged) response will be received.
 
-If a command is unsuccessful, an `NA` (Not Applicable) response will be recieved.
+If a command is unsuccessful, an `NA` (Not Applicable) response will be received.
 
 These responses are prefixed with the 2-digit count value.
 
@@ -95,12 +95,12 @@ Time commands are a datetime stamp in the following format: `nHHMMHHMM`.
 - 3: Set second schedule
 - 4: Clear second schedule
 
-To clear a scheduled send all zeroes as the time format. A TM command is not required to be sent before when clearing a schedule.
+To clear a schedule, send all zeroes as the time format. A TM command is not required to be sent before when clearing a schedule.
 
 #### Example
 
 ```
-SP107001000  // set scheduled 1 to start at 07:00 and end at 10:00
+SP107001000  // set schedule 1 to start at 07:00 and end at 10:00
 SP308000009  // set schedule 2 to start at 08:00 and end at 00:09
 
 SP200000000  // clear schedule 1
